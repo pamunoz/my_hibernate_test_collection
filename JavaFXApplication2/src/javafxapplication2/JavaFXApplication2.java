@@ -10,6 +10,7 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.QuadCurve;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 /**
@@ -82,6 +83,52 @@ public class JavaFXApplication2 extends Application {
         smile.setFill(Color.FLORALWHITE);
         root.getChildren().add(smile);
         
+        // Rectangle Hands
+        Rectangle hand1 = new Rectangle(20, 150);
+        hand1.setStroke(Color.BLACK);
+        hand1.setFill(Color.FLORALWHITE);
+//        hand1.setWidth(20);
+//        hand1.setHeight(150);
+        hand1.setX(100);
+        hand1.setY(220);
+        hand1.setRotate(40);
+        hand1.setArcHeight(30);
+        hand1.setArcWidth(20);
+        root.getChildren().add(hand1);
+        
+        Rectangle hand2= new Rectangle(20, 150);
+        hand2.setStroke(Color.BLACK);
+        hand2.setFill(Color.FLORALWHITE);
+//        hand1.setWidth(20);
+//        hand1.setHeight(150);
+        hand2.setX(380);
+        hand2.setY(220);
+        hand2.setRotate(320);
+        hand2.setArcHeight(30);
+        hand2.setArcWidth(20);
+        root.getChildren().add(hand2);
+        
+        // Rectangles Legs
+        Rectangle leg1 = new Rectangle(20, 150);
+        leg1.setStroke(Color.BLACK);
+        leg1.setFill(Color.FLORALWHITE);
+        leg1.setX(200);
+        leg1.setY(380);
+        leg1.setArcHeight(30);
+        leg1.setArcWidth(20);
+        root.getChildren().add(leg1);
+        
+        Rectangle leg2 = new Rectangle(20, 150);
+        leg2.setStroke(Color.BLACK);
+        leg2.setFill(Color.FLORALWHITE);
+        leg2.setX(280);
+        leg2.setY(380);
+        leg2.setArcHeight(30);
+        leg2.setArcWidth(20);
+        root.getChildren().add(leg2);
+        
+       
+        
         // Ellipse Body
         Ellipse body = new Ellipse(250, 282, 120, 120);
         body.setStroke(Color.BLACK);
@@ -93,6 +140,17 @@ public class JavaFXApplication2 extends Application {
         new Stop(1, Color.rgb(90, 150, 60, 0.97)));
         body.setFill(color);
         root.getChildren().add(body);
+        
+         // Rectangle Tie
+        Rectangle tie = new Rectangle(20, 235);
+        tie.setStroke(Color.BLACK);
+        tie.setFill(Color.RED);
+        tie.setX(240);
+        tie.setY(163);
+        tie.setArcHeight(30);
+        tie.setArcWidth(20);
+        root.getChildren().add(tie);
+        
         
         
         
