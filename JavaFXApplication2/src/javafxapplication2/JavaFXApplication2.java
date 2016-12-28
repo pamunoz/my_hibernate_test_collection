@@ -3,6 +3,8 @@ package javafxapplication2;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Reflection;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -11,6 +13,8 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.QuadCurve;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -27,7 +31,23 @@ public class JavaFXApplication2 extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 600, 600, Color.FLORALWHITE);
         
-        // First Line
+        // Draw the figure with this member method
+        drawFigure(root);
+        
+        // Draw the Text with this member method
+        drawText(root);
+  
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+    private void drawFigure(Group root) {
+                // First Line
         Line line1 = new Line(200, 20, 300, 20);
 //        line1.setStartX(200);
 //        line1.setStartY(20);
@@ -127,12 +147,9 @@ public class JavaFXApplication2 extends Application {
         leg2.setArcWidth(20);
         root.getChildren().add(leg2);
         
-       
-        
         // Ellipse Body
         Ellipse body = new Ellipse(250, 282, 120, 120);
-        body.setStroke(Color.BLACK);
-               
+        body.setStroke(Color.BLACK);        
         // Linear Gradien Property
         LinearGradient color = new LinearGradient(
         250, 282, 120, 120, false, CycleMethod.REFLECT, 
@@ -141,6 +158,9 @@ public class JavaFXApplication2 extends Application {
         body.setFill(color);
         root.getChildren().add(body);
         
+        // We can add the figures like this also
+        //root.getChildren().addAll(line1, line2, line3, curve, face);
+           
          // Rectangle Tie
         Rectangle tie = new Rectangle(20, 235);
         tie.setStroke(Color.BLACK);
@@ -149,21 +169,39 @@ public class JavaFXApplication2 extends Application {
         tie.setY(163);
         tie.setArcHeight(30);
         tie.setArcWidth(20);
-        root.getChildren().add(tie);
-        
-        
-        
-        
-        //root.getChildren().addAll(line1, line2, line3, curve, face);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        root.getChildren().add(tie);        
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
+    
+    private void drawText(Group root) {
+        // Text
+        Text text = new Text(380, 50, "Hi Friends, \nThis is \ndesigned by \n Ram");
+        Font font = new Font("Serif", 20);
+        text.setFont(font);
+        text.setFill(Color.RED);
+        
+        // Shadow effect
+        DropShadow shadow = new DropShadow();
+        shadow.setOffsetX(10);
+        shadow.setOffsetY(10);
+        shadow.setColor(Color.rgb(50, 50, 50, 0.6));
+        text.setEffect(shadow);
+        
+        
+        
+        // Reflection effect
+        Text text2 = new Text(380, 200, "Created on 12/11/2016");
+        text2.setFont(font);
+        text2.setFill(Color.MAROON);
+        
+        Reflection refelect = new Reflection();
+        refelect.setFraction(8);
+        refelect.setTopOffset(5);
+        text2.setEffect(refelect);
+        
+        root.getChildren().addAll(text, text2);
+        
+        
+        
+    } 
     
 }
