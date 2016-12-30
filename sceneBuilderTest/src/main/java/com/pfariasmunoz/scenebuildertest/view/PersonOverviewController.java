@@ -7,6 +7,8 @@ import javafx.scene.control.TableView;
 import com.pfariasmunoz.scenebuildertest.MainApp;
 import com.pfariasmunoz.scenebuildertest.model.Person;
 import com.pfariasmunoz.scenebuildertest.util.DateUtil;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class PersonOverviewController extends AnchorPane{
@@ -107,6 +109,17 @@ public class PersonOverviewController extends AnchorPane{
     @FXML
     private void handleDeletePerson() {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-        personTable.getItems().remove(selectedIndex);
+        if (selectedIndex >= 0) {
+                personTable.getItems().remove(selectedIndex);
+            } else {
+                // Nothing selected.
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.initOwner(mainApp.getPrimaryStage());
+                alert.setTitle("No Selection");
+                alert.setHeaderText("No Person Selected");
+                alert.setContentText("Please select a person in the table.");
+
+                alert.showAndWait();
+            }
     }
 }
