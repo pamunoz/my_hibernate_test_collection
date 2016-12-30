@@ -6,6 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import com.pfariasmunoz.scenebuildertest.MainApp;
 import com.pfariasmunoz.scenebuildertest.model.Person;
+import com.pfariasmunoz.scenebuildertest.util.DateUtil;
 import javafx.scene.layout.AnchorPane;
 
 public class PersonOverviewController extends AnchorPane{
@@ -46,8 +47,17 @@ public class PersonOverviewController extends AnchorPane{
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
-        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+        firstNameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().firstNameProperty());
+        lastNameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().lastNameProperty());
+
+        // Clear person details.
+        showPersonDetails(null);
+
+        // Listen for selection changes and show the person details when changed.
+        personTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     /**
@@ -77,8 +87,9 @@ public class PersonOverviewController extends AnchorPane{
             postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
             cityLabel.setText(person.getCity());
 
-            // TODO: We need a way to convert the birthday into a String! 
+            // DONE: We need a way to convert the birthday into a String! 
             // birthdayLabel.setText(...);
+            birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
             // Person is null, remove all the text.
             firstNameLabel.setText("");
