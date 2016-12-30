@@ -28,7 +28,7 @@ public class JavaFXApplication3 extends Application {
         Scene scene = new Scene(vBox, 400, 400, Color.SILVER);
         
         
-        primaryStage.setTitle("JavaFx 8 - HBox and VBox Layout");
+        primaryStage.setTitle("JavaFX 8 Tutorial 7\n - BorderPane, GridPane, FlowPane,\n Label, TextField, Button and SVGPath");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
