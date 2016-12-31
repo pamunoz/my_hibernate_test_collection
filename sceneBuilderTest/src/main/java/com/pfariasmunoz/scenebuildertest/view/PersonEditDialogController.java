@@ -7,14 +7,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.pfariasmunoz.scenebuildertest.model.Person;
 import com.pfariasmunoz.scenebuildertest.util.DateUtil;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * Dialog to edit details of a person.
  * 
  * @author Marco Jakob
  */
-public class PersonEditDialogController extends AnchorPane {
+public class PersonEditDialogController {
 
     @FXML
     private TextField firstNameField;
@@ -159,5 +158,4 @@ public class PersonEditDialogController extends AnchorPane {
             return false;
         }
     }
-    
 }
