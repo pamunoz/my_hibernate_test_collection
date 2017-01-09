@@ -50,8 +50,13 @@ public class HibernateTest {
         Transaction tx = session.beginTransaction();       
         session.save(user);
         tx.commit();
-        session.close();     
+        session.close();  
         
+        user = null;
+        session = sessionFactory.openSession(); 
+        user = (UserDetails) session.get(UserDetails.class, 1);
+        int sizeUsers = user.getListOfAddresses().size();
+        System.out.println("The number of addresses is: " + sizeUsers);
     }
     
 }
