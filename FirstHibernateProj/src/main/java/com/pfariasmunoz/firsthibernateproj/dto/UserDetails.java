@@ -1,6 +1,8 @@
 package com.pfariasmunoz.firsthibernateproj.dto;
 
-import javax.persistence.Embedded;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,13 +14,13 @@ import javax.persistence.Table;
 public class UserDetails {
     
     @Id 
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int userId;
        
     private String userName;
     
-    @Embedded
-    private Address address;
+    @ElementCollection
+    private Set<Address> listOfAddresses = new HashSet();
 
     public int getUserId() {
         return userId;
@@ -34,16 +36,15 @@ public class UserDetails {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    } 
+
+    public Set<Address> getListOfAddresses() {
+        return listOfAddresses;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setListOfAddresses(Set<Address> listOfAddresses) {
+        this.listOfAddresses = listOfAddresses;
     }
     
     
-      
 }
