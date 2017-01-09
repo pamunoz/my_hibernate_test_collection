@@ -1,18 +1,29 @@
 package com.pfariasmunoz.firsthibernateproj.dto;
 
-import javax.persistence.Column;
+import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-@Entity (name = "user_details")
+@Entity
+@Table (name = "USER_DETAILS")
 public class UserDetails {
     
     @Id
-    @Column (name = "USER_ID")
     private int userId;
-    
-    @Column (name = "USER_NAME")
+       
     private String userName;
+    
+    @Temporal (TemporalType.DATE)
+    private Date joinedDate;
+    private String Address;
+    
+    @Lob
+    private String description;
 
     public int getUserId() {
         return userId;
@@ -29,5 +40,30 @@ public class UserDetails {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public Date getJoinedDate() {
+        return joinedDate;
+    }
+
+    public void setJoinedDate(Date joinedDate) {
+        this.joinedDate = joinedDate;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String Address) {
+        this.Address = Address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
       
 }

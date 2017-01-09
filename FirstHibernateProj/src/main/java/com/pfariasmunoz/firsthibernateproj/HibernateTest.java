@@ -1,6 +1,7 @@
 package com.pfariasmunoz.firsthibernateproj;
 
 import com.pfariasmunoz.firsthibernateproj.dto.UserDetails;
+import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,8 +18,12 @@ public class HibernateTest {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             UserDetails user = new UserDetails();
-            user.setUserId(3);
-            user.setUserName("Third User");
+            user.setUserId(1);
+            user.setUserName("First User");
+            user.setAddress("First user adress");
+            user.setJoinedDate(new Date());
+            user.setDescription("description of the user goes here");
+            
             
             session.save(user);
             tx.commit();
