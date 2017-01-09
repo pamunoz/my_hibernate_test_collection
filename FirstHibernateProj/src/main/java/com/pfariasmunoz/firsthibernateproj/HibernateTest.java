@@ -10,32 +10,24 @@ import org.hibernate.cfg.Configuration;
 public class HibernateTest {
     
     public static void main(String[] args) {
+        
+        UserDetails user = new UserDetails();
+        UserDetails user2 = new UserDetails();
+        
+        user.setUserName("Pablo");
+        user2.setUserName("Cristopher");
+        
         SessionFactory sessionFactory;
         sessionFactory = new Configuration()
                 .configure() // configures settings from hibernate.cfg.xml
                 .buildSessionFactory();
  
         Session session = sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-
-        UserDetails user = new UserDetails();
-        user.setUserId(1);
-        user.setUserName("Pablo");
-        user.setAddress("First user adress");
-        user.setJoinedDate(new Date());
-        user.setDescription("description of the user goes here");
-
+        Transaction tx = session.beginTransaction();       
         session.save(user);
+        session.save(user2);
         tx.commit();
-        session.close();
-        user = null;
-        
-        session = sessionFactory.openSession();
-        Transaction tx2 = session.beginTransaction(); 
-        
-        user = (UserDetails) session.get(UserDetails.class, 1);
-        System.out.println("User Name retrieved is " + user.getUserName());
-       
+        session.close();     
         
     }
     
