@@ -1,5 +1,6 @@
 package com.pfariasmunoz.firsthibernateproj.dto;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,9 @@ public class UserDetails {
     private int userId;
        
     private String userName;
+    
+    @Embedded
+    private Address address;
 
     public int getUserId() {
         return userId;
@@ -31,5 +35,15 @@ public class UserDetails {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    
+    
       
 }
