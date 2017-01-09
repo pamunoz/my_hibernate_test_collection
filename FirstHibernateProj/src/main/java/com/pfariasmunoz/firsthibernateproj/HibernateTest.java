@@ -14,16 +14,15 @@ public class HibernateTest {
                 .configure() // configures settings from hibernate.cfg.xml
                 .buildSessionFactory();
  
-        Session session = sessionFactory.openSession();
- 
-        Transaction tx = session.beginTransaction();
-        UserDetails user = new UserDetails();
-        user.setUserId(1);
-        user.setUserName("First User");
-        
-        session.save(user);
-        tx.commit();
-        session.close();
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            UserDetails user = new UserDetails();
+            user.setUserId(3);
+            user.setUserName("Third User");
+            
+            session.save(user);
+            tx.commit();
+        }
         
     }
     

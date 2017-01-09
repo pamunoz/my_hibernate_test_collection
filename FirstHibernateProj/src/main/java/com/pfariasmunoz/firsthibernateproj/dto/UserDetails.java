@@ -1,14 +1,17 @@
 package com.pfariasmunoz.firsthibernateproj.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity (name = "user_details")
 public class UserDetails {
     
     @Id
+    @Column (name = "USER_ID")
     private int userId;
     
+    @Column (name = "USER_NAME")
     private String userName;
 
     public int getUserId() {
@@ -26,6 +29,5 @@ public class UserDetails {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    
-    
+      
 }
