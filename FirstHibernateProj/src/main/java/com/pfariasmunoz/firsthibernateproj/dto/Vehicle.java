@@ -16,6 +16,8 @@ public class Vehicle {
     private int vehicleId;
     
     private String vehicleName;
+    
+    private UserDetails user;
 
     public int getVehicleId() {
         return vehicleId;

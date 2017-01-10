@@ -39,14 +39,16 @@ public class HibernateTest {
                 .configure() // configures settings from hibernate.cfg.xml
                 .buildSessionFactory();
  
-        Session session = sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.save(zapatilla);
-        session.save(zapato);
-        session.save(vehicle);
-        session.save(user);
-        tx.commit();
-        session.close();       
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            session.save(zapatilla);
+            session.save(zapato);
+            session.save(vehicle);
+            session.save(cris);
+            session.save(user);
+
+            tx.commit();
+        }       
     }
     
 }

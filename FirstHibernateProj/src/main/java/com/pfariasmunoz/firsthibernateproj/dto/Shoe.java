@@ -3,6 +3,7 @@ package com.pfariasmunoz.firsthibernateproj.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -13,6 +14,7 @@ public class Shoe {
     private int id;
     
     @ManyToOne
+    @JoinColumn(name = "USER_ID")
     private UserDetails owner;
 
     public UserDetails getOwner() {

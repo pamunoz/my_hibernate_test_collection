@@ -2,6 +2,7 @@ package com.pfariasmunoz.firsthibernateproj.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,9 +29,7 @@ public class UserDetails {
     @JoinColumn (name = "VEHICLE_ID")
     private Vehicle vehicle;
     
-    @OneToMany
-    @JoinTable(name = "USER_SHOES", joinColumns = @JoinColumn(name = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "shoe_id"))
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Collection<Shoe> calzado = new ArrayList<Shoe>();
     
     
