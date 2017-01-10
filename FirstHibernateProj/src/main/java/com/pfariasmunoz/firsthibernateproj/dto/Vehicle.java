@@ -6,9 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 /**
  *
@@ -23,9 +20,8 @@ public class Vehicle {
     
     private String vehicleName;
     
-    @ManyToOne
-    @NotFound(action = NotFoundAction.IGNORE)
-    private UserDetails user;
+    @ManyToMany(mappedBy = "vehicleList")
+    private Collection<UserDetails> userlists = new ArrayList<>();
 
     public int getVehicleId() {
         return vehicleId;
@@ -43,4 +39,14 @@ public class Vehicle {
         this.vehicleName = vehicleName;
     }
 
+    public Collection<UserDetails> getUserlists() {
+        return userlists;
+    }
+
+    public void setUserlists(Collection<UserDetails> userlists) {
+        this.userlists = userlists;
+    }
+    
+    
+    
 }

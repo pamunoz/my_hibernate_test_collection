@@ -54,14 +54,14 @@ public class HibernateTest {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             // save the shoes
-            session.save(zapatilla);
-            session.save(zapato);
-            // save the vehicles
-            session.save(vehicle);
-            session.save(vehicle2);
+//            session.save(zapatilla);
+//            session.save(zapato);
+//            // save the vehicles
+//            session.save(vehicle);
+//            session.save(vehicle2);
             // save the users
-            session.save(cris);
-            session.save(user);
+            session.persist(cris);
+            session.persist(user);
 
             tx.commit();
         }       

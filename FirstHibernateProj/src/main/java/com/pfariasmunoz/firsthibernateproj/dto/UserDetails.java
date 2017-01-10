@@ -26,10 +26,10 @@ public class UserDetails {
        
     private String userName;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<Vehicle> vehicleList = new ArrayList<>();
     
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private Collection<Shoe> calzado = new ArrayList<Shoe>();
     
     
