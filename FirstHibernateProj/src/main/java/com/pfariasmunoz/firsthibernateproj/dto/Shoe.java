@@ -14,9 +14,9 @@ public class Shoe {
     private int id;
     
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "owner")
     private UserDetails owner;
-
+    
     public UserDetails getOwner() {
         return owner;
     }

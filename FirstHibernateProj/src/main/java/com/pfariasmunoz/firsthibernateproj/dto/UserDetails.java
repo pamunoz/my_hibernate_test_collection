@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,9 +26,8 @@ public class UserDetails {
        
     private String userName;
     
-    @OneToOne
-    @JoinColumn (name = "VEHICLE_ID")
-    private Vehicle vehicle;
+    @ManyToMany
+    private Collection<Vehicle> vehicleList = new ArrayList<>();
     
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Collection<Shoe> calzado = new ArrayList<Shoe>();
@@ -49,13 +49,15 @@ public class UserDetails {
         this.userName = userName;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public Collection<Vehicle> getVehicleList() {
+        return vehicleList;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicleList(Collection<Vehicle> vehicleList) {
+        this.vehicleList = vehicleList;
     }
+
+   
 
     public Collection<Shoe> getCalzado() {
         return calzado;

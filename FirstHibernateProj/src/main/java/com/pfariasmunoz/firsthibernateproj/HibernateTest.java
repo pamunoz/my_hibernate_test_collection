@@ -14,15 +14,22 @@ public class HibernateTest {
     
     public static void main(String[] args) {
         
+        // Creating Users
         UserDetails user = new UserDetails();       
         user.setUserName("Pablo");
         
         UserDetails cris = new UserDetails();
         cris.setUserName("Cristopher");
         
+        // Creating Vehicles
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleName("Tesla Model 3");
         
+        Vehicle vehicle2 = new Vehicle();
+        vehicle2.setVehicleName("Toyota");
+        
+        
+        //Crating Shoes
         Shoe zapatilla = new Shoe();
         zapatilla.setBrand("Nike");
         Shoe zapato = new Shoe();
@@ -31,8 +38,13 @@ public class HibernateTest {
         user.getCalzado().add(zapatilla);
         user.getCalzado().add(zapato);
         zapato.setOwner(cris);
+        zapatilla.setOwner(user);
         
-        user.setVehicle(vehicle);
+        user.getVehicleList().add(vehicle);
+        user.getVehicleList().add(vehicle2);
+        cris.getVehicleList().add(vehicle);
+        
+        
               
         SessionFactory sessionFactory;
         sessionFactory = new Configuration()
@@ -41,9 +53,13 @@ public class HibernateTest {
  
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
+            // save the shoes
             session.save(zapatilla);
             session.save(zapato);
+            // save the vehicles
             session.save(vehicle);
+            session.save(vehicle2);
+            // save the users
             session.save(cris);
             session.save(user);
 
