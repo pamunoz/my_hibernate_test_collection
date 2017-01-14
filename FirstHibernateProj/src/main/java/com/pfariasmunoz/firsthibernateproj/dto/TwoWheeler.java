@@ -1,9 +1,12 @@
 package com.pfariasmunoz.firsthibernateproj.dto;
 
+import java.io.Serializable;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-public class TwoWheeler extends Vehicle {
+@DiscriminatorValue("Bike")
+public class TwoWheeler extends Vehicle implements Serializable {
     
     private String mSteeringHandle;
 
