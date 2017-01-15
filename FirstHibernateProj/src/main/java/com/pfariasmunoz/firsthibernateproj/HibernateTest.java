@@ -33,9 +33,13 @@ public class HibernateTest {
              
             // READ operation: fetching the element with id = 6 from UserDetail table
             
+//            UserDetails user =  session.get(UserDetails.class, 6);
+//            System.out.println("User name pulled up is: " + user.getUserName());
+            
+            // DELETE operation
             UserDetails user =  session.get(UserDetails.class, 6);
-            System.out.println("User name pulled up is: " + user.getUserName());
-
+            session.delete(user);
+            
             tx.commit();
         }       
     }
