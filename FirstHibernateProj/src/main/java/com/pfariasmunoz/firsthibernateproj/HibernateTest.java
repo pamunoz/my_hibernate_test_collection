@@ -24,11 +24,17 @@ public class HibernateTest {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             
-            for (int i = 1; i <= 10; i++) {
-                UserDetails user = new UserDetails();
-                user.setUserName("User " + i);
-                session.save(user);
-            }
+            // CREATE operation
+//            for (int i = 1; i <= 10; i++) {
+//                UserDetails user = new UserDetails();
+//                user.setUserName("User " + i);
+//                session.save(user);
+//            }
+             
+            // READ operation: fetching the element with id = 6 from UserDetail table
+            
+            UserDetails user =  session.get(UserDetails.class, 6);
+            System.out.println("User name pulled up is: " + user.getUserName());
 
             tx.commit();
         }       
