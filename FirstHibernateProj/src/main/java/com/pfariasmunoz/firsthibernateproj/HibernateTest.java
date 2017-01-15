@@ -2,6 +2,7 @@ package com.pfariasmunoz.firsthibernateproj;
 
 import com.pfariasmunoz.firsthibernateproj.dto.FourWheeler;
 import com.pfariasmunoz.firsthibernateproj.dto.TwoWheeler;
+import com.pfariasmunoz.firsthibernateproj.dto.UserDetails;
 import com.pfariasmunoz.firsthibernateproj.dto.Vehicle;
 import java.util.List;
 import org.hibernate.Query;
@@ -23,8 +24,12 @@ public class HibernateTest {
             Transaction tx = session.beginTransaction();
             
             Query query = session.createQuery("from UserDetails where userId > 5");
-            List users = query.list();
+            List<UserDetails> users = (List<UserDetails>)query.list();
             System.out.println("Size of list result = " + users.size());
+            
+            users.forEach((user) -> {
+                System.out.println("User name: " + user.getUserName());
+            });
 
             tx.commit();
         }       
