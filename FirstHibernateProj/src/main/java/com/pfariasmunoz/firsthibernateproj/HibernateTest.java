@@ -37,8 +37,13 @@ public class HibernateTest {
 //            System.out.println("User name pulled up is: " + user.getUserName());
             
             // DELETE operation
-            UserDetails user =  session.get(UserDetails.class, 6);
-            session.delete(user);
+//            UserDetails user =  session.get(UserDetails.class, 6);
+//            session.delete(user);
+            
+            // UPDATE operation
+            UserDetails user =  session.get(UserDetails.class, 5);
+            user.setUserName("Updated User");
+            session.update(user);
             
             tx.commit();
         }       
