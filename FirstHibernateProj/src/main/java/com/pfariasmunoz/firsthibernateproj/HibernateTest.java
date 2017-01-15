@@ -22,7 +22,7 @@ public class HibernateTest {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             
-            Query query = session.createQuery("from UserDetails");
+            Query query = session.createQuery("from UserDetails where userId > 5");
             List users = query.list();
             System.out.println("Size of list result = " + users.size());
 
