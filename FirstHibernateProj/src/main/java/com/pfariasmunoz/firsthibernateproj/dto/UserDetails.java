@@ -26,9 +26,6 @@ public class UserDetails {
        
     private String userName;
     
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    private Collection<Vehicle> vehicleList = new ArrayList<>();
-    
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private Collection<Shoe> calzado = new ArrayList<Shoe>();
     
@@ -48,16 +45,6 @@ public class UserDetails {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    public Collection<Vehicle> getVehicleList() {
-        return vehicleList;
-    }
-
-    public void setVehicleList(Collection<Vehicle> vehicleList) {
-        this.vehicleList = vehicleList;
-    }
-
-   
 
     public Collection<Shoe> getCalzado() {
         return calzado;

@@ -18,5 +18,7 @@
         <mapping class="com.pfariasmunoz.firsthibernateproj.dto.UserDetails"></mapping>
         <mapping class="com.pfariasmunoz.firsthibernateproj.dto.Vehicle"></mapping>
         <mapping class="com.pfariasmunoz.firsthibernateproj.dto.Shoe"></mapping>
+        <mapping class="com.pfariasmunoz.firsthibernateproj.dto.FourWheeler"></mapping>
+        <mapping class="com.pfariasmunoz.firsthibernateproj.dto.TwoWheeler"></mapping>
     </session-factory>
 </hibernate-configuration>

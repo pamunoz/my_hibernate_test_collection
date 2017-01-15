@@ -5,7 +5,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("Bike")
 public class TwoWheeler extends Vehicle implements Serializable {
     
     private String mSteeringHandle;
