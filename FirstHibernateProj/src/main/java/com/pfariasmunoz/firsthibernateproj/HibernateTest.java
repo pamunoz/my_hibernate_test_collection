@@ -23,9 +23,12 @@ public class HibernateTest {
             String minUserId = "5";
             
             
-            Query query = session.createQuery(" from UserDetails where userId > ?");
-            query.setInteger(0, Integer.parseInt(minUserId));
+//            Query query = session.createQuery(" from UserDetails where userId > ?");
+//            query.setInteger(0, Integer.parseInt(minUserId));
 
+            Query query = session.createQuery(" from UserDetails where userId > :userId");
+            query.setInteger("userId", Integer.parseInt(minUserId));
+            
             //Query query = session.createQuery("select userName from UserDetails");
             // Adding pagination
 //            query.setFirstResult(2);
