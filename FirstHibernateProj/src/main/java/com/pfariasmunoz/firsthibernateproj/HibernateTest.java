@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 public class HibernateTest {
@@ -20,10 +22,17 @@ public class HibernateTest {
  
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
+//            
+//            Criteria criteria = session.createCriteria(UserDetails.class);
+//            criteria.add(Restrictions.eq("userName", "User 10"))
+//                    .add(Restrictions.gt("UserId", 5));
             
-            Criteria criteria = session.createCriteria(UserDetails.class);
-            criteria.add(Restrictions.eq("userName", "User 10"))
-                    .add(Restrictions.gt("UserId", 5));
+            // Some projections
+            Criteria criteria = session.createCriteria(UserDetails.class)
+                    .setProjection(Projections.max("UserId"))
+                    .setProjection(Projections.count("UserId"))
+                    .addOrder(Order.desc("UserId"));
+            
             
             List<UserDetails> users = (List<UserDetails>) criteria.list();
             tx.commit();
