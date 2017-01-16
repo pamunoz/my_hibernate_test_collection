@@ -20,18 +20,28 @@ public class HibernateTest {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             
-            Query query = session.createQuery("select userName from UserDetails");
+            String minUserId = "5";
+            
+            
+            Query query = session.createQuery(" from UserDetails where userId > ?");
+            query.setInteger(0, Integer.parseInt(minUserId));
+
+            //Query query = session.createQuery("select userName from UserDetails");
             // Adding pagination
-            query.setFirstResult(2);
-            query.setMaxResults(3);
+//            query.setFirstResult(2);
+//            query.setMaxResults(3);
             
             
-//            List<UserDetails> users = (List<UserDetails>)query.list();
-            List<String> userNames = (List<String>) query.list();
-            System.out.println("Size of list result = " + userNames.size());
+            List<UserDetails> users = (List<UserDetails>)query.list();
+            //List<String> userNames = (List<String>) query.list();
+            //System.out.println("Size of list result = " + userNames.size());
             
-            userNames.forEach((userName) -> {
-                System.out.println("User name: " + userName);
+            //userNames.forEach((userName) -> {
+                //System.out.println("User name: " + userName);
+            //});
+            
+            users.forEach((user) -> {
+                System.out.println("User name: " + user.getUserName());
             });
 
             tx.commit();
